@@ -22,26 +22,48 @@ class DetailPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        const SizedBox(height: 300),
-                        Text(
-                          planetInfo.name,
-                          style: TextStyle(
-                            fontFamily: 'Avenir',
-                            fontSize: 56,
-                            color: primaryTextColor,
-                            fontWeight: FontWeight.w900,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                        Text(
-                          'Solar System',
-                          style: TextStyle(
-                            fontFamily: 'Avenir',
-                            fontSize: 31,
-                            color: primaryTextColor,
-                            fontWeight: FontWeight.w300,
-                          ),
-                          textAlign: TextAlign.left,
+                        Row(
+                          children: [
+                            Text(
+                              planetInfo.positon.toString(),
+                              style: TextStyle(
+                                fontFamily: 'Avenir',
+                                fontSize: 210,
+                                color: primaryTextColor.withOpacity(0.08),
+                                fontWeight: FontWeight.w900,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Hero(
+                                      tag: planetInfo.positon,
+                                      child: Image.asset(planetInfo.iconImage,width: 220,),),
+                                  Text(
+                                    planetInfo.name,
+                                    style: TextStyle(
+                                      fontFamily: 'Avenir',
+                                      fontSize: 56,
+                                      color: primaryTextColor,
+                                      fontWeight: FontWeight.w900,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                  Text(
+                                    'Solar System',
+                                    style: TextStyle(
+                                      fontFamily: 'Avenir',
+                                      fontSize: 31,
+                                      color: primaryTextColor,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                         const Divider(color: Colors.black38),
                         const SizedBox(height: 32),
@@ -100,28 +122,8 @@ class DetailPage extends StatelessWidget {
                 ],
               ),
             ),
-            Positioned(
-              right: -64,
-              child: Hero(
-                  tag: planetInfo.positon,
-                  child: Image.asset(planetInfo.iconImage)),
-            ),
-            Positioned(
-              top: 60,
-              left: 32,
-              child: Text(
-                planetInfo.positon.toString(),
-                style: TextStyle(
-                  fontFamily: 'Avenir',
-                  fontSize: 247,
-                  color: primaryTextColor.withOpacity(0.08),
-                  fontWeight: FontWeight.w900,
-                ),
-                textAlign: TextAlign.left,
-              ),
-            ),
             Padding(
-              padding: const EdgeInsets.only(left: 12.0,top: 12.0),
+              padding: const EdgeInsets.only(left: 12.0, top: 12.0),
               child: IconButton(
                 icon: const Icon(Icons.arrow_back_ios),
                 onPressed: () {

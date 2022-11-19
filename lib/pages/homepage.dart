@@ -1,9 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swipe/flutter_swipe.dart';
 
 import '../constants/constants.dart';
 import '../models/models.dart';
 import 'detailPage.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,6 +15,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0; //New
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +33,7 @@ class _HomePageState extends State<HomePage> {
         child: SafeArea(
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 60,
               ),
               const Text(
@@ -58,19 +62,19 @@ class _HomePageState extends State<HomePage> {
                 ],
                 onChanged: (value) {},
                 icon: Padding(
-                  padding: EdgeInsets.only(left: 16.0),
+                  padding: const EdgeInsets.only(left: 16.0),
                   child: Image.asset('assets/drop_down_icon.png'),
                 ),
-                underline: SizedBox(),
+                underline: const SizedBox(),
               ),
               Container(
                 height: 500,
-                padding: EdgeInsets.fromLTRB(32, 0, 0, 10),
+                padding: const EdgeInsets.fromLTRB(32, 0, 0, 10),
                 child: Swiper(
                   itemCount: planets.length,
                   itemWidth: MediaQuery.of(context).size.width - 2 * 40,
                   layout: SwiperLayout.STACK,
-                  pagination: SwiperPagination(
+                  pagination: const SwiperPagination(
                     builder:
                         DotSwiperPaginationBuilder(activeSize: 18, space: 8),
                   ),
@@ -90,7 +94,7 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Column(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 100,
                               ),
                               Card(
@@ -105,15 +109,15 @@ class _HomePageState extends State<HomePage> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 100,
                                       ),
                                       Text(
                                         planets[index].name,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontFamily: 'Avenir',
                                           fontSize: 40,
-                                          color: const Color(0xFF47455F),
+                                          color: Color(0xFF47455F),
                                           fontWeight: FontWeight.w900,
                                         ),
                                         textAlign: TextAlign.left,
@@ -182,34 +186,29 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      bottomNavigationBar: Container(
-        height: 60,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.vertical(
-            top: Radius.circular(20.0),
+      bottomNavigationBar: CurvedNavigationBar(
+        animationDuration: const Duration(milliseconds: 300),
+        onTap: (index) {
+          if (kDebugMode) {
+            print(index);
+          }
+        },
+        items: [
+          IconButton(
+            onPressed: () {},
+            icon: Image.asset('assets/menu_icon.png'),
           ),
-          color: navigationColor,
-        ),
-        padding: EdgeInsets.all(0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              onPressed: () {},
-              icon: Image.asset('assets/menu_icon.png'),
+          IconButton(
+            onPressed: () {},
+            icon: Image.asset(
+              'assets/search_icon.png',
             ),
-            IconButton(
-              onPressed: () {},
-              icon: Image.asset(
-                'assets/search_icon.png',
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: Image.asset('assets/profile_icon.png'),
-            )
-          ],
-        ),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Image.asset('assets/profile_icon.png'),
+          )
+        ],
       ),
     );
   }
