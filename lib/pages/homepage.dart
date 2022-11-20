@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         child: SafeArea(
-          child: Column(
+          child: ListView(
             children: [
               const SizedBox(
                 height: 60,
@@ -187,14 +187,17 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       bottomNavigationBar: CurvedNavigationBar(
-        animationDuration: const Duration(milliseconds: 300),
+        animationDuration: Duration(milliseconds: 200),
         onTap: (index) {
           if (kDebugMode) {
             print(index);
           }
         },
         items: [
-          IconButton(
+          Icon(Icons.add, size: 30),
+          Icon(Icons.list, size: 30),
+          Icon(Icons.compare_arrows, size: 30),
+/*          IconButton(
             onPressed: () {},
             icon: Image.asset('assets/menu_icon.png'),
           ),
@@ -207,7 +210,7 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             onPressed: () {},
             icon: Image.asset('assets/profile_icon.png'),
-          )
+          )*/
         ],
       ),
     );
