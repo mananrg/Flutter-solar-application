@@ -1,7 +1,7 @@
 # solar_app
 
-A new Flutter project.
-
+A "planets app" designed in Flutter is an interactive mobile application that allows users to explore and learn about different planets in our solar system. Here is the description of the app.
+The home screen of the app lists all the planets in the solar system, along with their images and tapping on a planet would take the user to a detailed page about that planet showing basic information like distance from the sun, size, and number of moons.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
